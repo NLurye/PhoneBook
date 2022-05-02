@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phone Book</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            const book = new Array();
+            $("#add").click(function(){
+                var person = {name:$("#Name").val(), num:  $("#PhoneNumber").val()}
+                book[book.length] = person;
+                $("#BigScreen").append(person.name + " " + person.num + "</br>");
+            });
+            $("#sort").click(function(){
+                book.sort((x,y)=>x.name-y.name);
+                $("#BigScreen").empty();
+                for(x in book){
+                   console.log(book[x].name + " " + book[x].num + "</br>");
+                    $("#BigScreen").append(book[x].name + " " + book[x].num + "</br>");
+                }
+            });
+            $("#delete").click(function(){
+                $("#BigScreen").empty();
+            });
+
+            });
+        </script>
+</head>
+<body>
+
+    <div class="input">
+        <label>Name</label>
+    <input type="text"  id="Name"></input>
+        <label>Phone</label>
+    <input type="text"   id="PhoneNumber"></input>
+    </div>
+    <div class="buttons">
+        <button >Search</button>
+        <button id = "add">Add</button>
+        <button id = "delete">Delete</button>
+        <button id = "sort">Sort by</button>
+</div>
+<section id="BigScreen"></section>
+</body>
+</html>
